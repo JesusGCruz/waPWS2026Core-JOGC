@@ -1,0 +1,59 @@
+﻿@page
+@model waPWS2026Core.Pages.ContactoModel
+@{
+    ViewData["Title"] = "Contacto :: DAW"; 
+}   
+
+
+<h1>Contacto</h1>
+<div class="container mt-4" style="max-width:600px;">
+    <!-- Mensaje -->
+    @if (TempData["Mensaje"] != null)
+    {
+        <div class="alert alert-success">@TempData["Mensaje"]</div>
+    }
+    <div class="card border-primary">
+        <div class="card-header bg-primary text-white">
+            <h4 class="mb-0">Formulario Contacto</h4>
+        </div>
+        <div class="card-body">
+            <form method="post" id="frmMain">
+                <div class="mb-3">
+                    <label asp-for="Contacto.tbNombre" class="form-label">Nombre</label>
+                    <input asp-for="Contacto.tbNombre" class="form-control" />
+                    <span asp-validation-for="Contacto.tbNombre" class="text-danger small"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Contacto.tbEmail" class="form-label">Email</label>
+                    <input asp-for="Contacto.tbEmail" class="form-control" />
+                    <span asp-validation-for="Contacto.tbEmail" class="text-danger small"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Contacto.TipoComentario" class="form-label">Tipo de Comentario</label>
+                    <select asp-for="Contacto.TipoComentario" class="form-select">
+
+                        <option value=""> --- Seleccione ---</option>
+                        <option>Sugerencias</option>
+                        <option>Quejas</option>
+                    </select>
+                    <span asp-validation-for="Contacto.TipoComentario" class="text-danger small"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="Contacto.tbComentarios" class="form-label">Comentarios:</label>
+                    <textarea asp-for="Contacto.tbComentarios" class="form-control" rows="5"></textarea>
+                    <span asp-validation-for="Contacto.tbComentarios" class="text-danger small"></span>
+
+                </div>
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                    <button type="button" class="btn btn-secondary" onclick="document.getElementById('frmMain').reset();">Cancelar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+@* @section Scripts{ 
+
+    <partial name="_ValidationScriptPartial" /> 
+
+} *@ 
